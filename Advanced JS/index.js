@@ -4,11 +4,10 @@ const overlay = document.getElementsByClassName('overlay')[0];
 const imgSrc = document.getElementsByClassName('img');
 const main1 = document.getElementsByClassName('main1')
 const prev=document.getElementById('prev');
-const next=document.getElementById('next');
+const next=document.getElementById('next')
 
 
-
-const pageWiseData = `https://swapi.dev/api/people/?page=${1}`
+const pageWiseData = "https://swapi.dev/api/people/?page=1"
 var promise = fetch(pageWiseData);
 promise.then(Response => Response.json())
   .then(function (data) {
@@ -19,11 +18,9 @@ promise.then(Response => Response.json())
     overlay.innerHTML='';
     for (let i = 0; i < data.results.length; i++) {
       var index = data.results[i].url.substring(29, data.results[i].url.length - 1)
-      renderData(index, data.results[i].name); 
-      // console.log(data.results[i].name)
+      renderData(index, data.results);
       end = index;
     }
-    
     let arr = data.results;
     listenEvent(start, end, arr);
     console.log(arr, start, end)
@@ -36,13 +33,13 @@ function renderData(id, arr) {
   <div class="img">
       <img src=${api} alt="">
   </div>
-  <h2>${arr}</h2>
+  <h2>${arr[id - 1].name}</h2>
 </div>`
   main.insertAdjacentHTML('beforeend', html);
 }
 
 //on click when any event occur   
-
+let flag = 0;
 //  function listenEvent(start, end, arr) {
 //   for (let i = start; i <= end; i++) {
 //     var particulardiv = document.getElementById(`main${i}`)
@@ -106,7 +103,7 @@ function renderData(id, arr) {
 
 // next prev button
 
-let flag = 0;
+
 function listenEvent(start, end, arr) {
   for (let i = start; i <= end; i++) {
     var particulardiv = document.getElementById(`main${i}`)
@@ -115,23 +112,22 @@ function listenEvent(start, end, arr) {
       if (flag == 0) {
         flag = 1;
         let data1 = arr[i - 1]
-      
-        getdata(data1.homeworld,data1.films,i);
+
+        getdata(data1,i);
       }
-      console.log('hii')
     })
   }
 }
 
 //show individual movie
-async function getdata(arr,arr1, i) {
+async function getdata(arr, i) {
   overlay.innerHTML = ''
   overlay.style.display = 'block';
   main.style.opacity = '0.1'
-  var response = await fetch(arr);
+  var response = await fetch(arr.homeworld);
   var data = await response.json();
   console.log(data.name);
-  let flim = arr1;
+  let flim = arr.films;
 
 var flimData='';
   for (let i = 0; i < flim.length; i++) {
@@ -164,22 +160,5 @@ var flimData='';
       })
 }
 
-
 //prev next button
-// var page=1;
-// prev.addEventListener('click',function(){
-//   Flag=false;
-//   if(page==1){
-//     page=10;
-//   }
-//   page--;
-//   starWar(page);
-// })
-// next.addEventListener('click',function(){
-//   Flag=false;
-//   if(page==9){
-//     page=0;
-//   }
-//   page++;
-//   starWar(page);
-// })
+var page=1;
