@@ -1,100 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .main {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-        h3{
-            text-align: center;
-        }
-        .heading {
-            text-align: center;
-        }
+      body{
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+      }
+      h3 {
+        text-align: center;
+      }
+      .heading {
+        text-align: center;
+      }
+      .img{
+        border-radius: 8px;
+        background-color: rgb(255, 255, 255);
+        width: 320px;
+        height: 320px;
+      }
+      .img:hover{
+        box-shadow: 0.5px 4px 2px 4px rgba(244, 244, 244, 0.79), 1.5px 6px 3px 6px white;
+      }
+      .img img:hover{
+        width: 310px;
+        height: 310px;
+        padding: 5px;
+      }
+      .img img {
+        border-radius: 20px;
+        padding: 10px;
+        cursor: pointer;
+        width: 300px;
+        height: 300px;
+      }
 
-        .img img {
-            width: 300px;
-            height: 300px;
-        }
+      .main1 h2 {
+        color: white;
+        text-align: center;
+      }
 
-        .main1 h2 {
-            text-align: center;
-        }
+      .overlay-img {
+        width: 300px;
+        height: 300px;
+      }
 
-        .overlay-img {
-            width: 300px;
-            height: 300px;
+      .overlay {
+        width: 540px;
+        height: 350px;
+        position: fixed;
+        top: 25%;
+        left: 35%;
+        display: none;
+      }
 
-        }
+      .overlay1 {
+        position: relative;
+        margin: 10px;
+        display: flex;
+        justify-content: space-evenly;
+      }
 
-        .overlay {
-            width: 540px;
-            height: 350px;
-            position: fixed;
-            top: 25%;
-            left: 35%;
-            display: none;
-        }
+      .data {
+        width: 180px;
+      }
 
-        .overlay1 {
-            position: relative;
-            margin: 10px;
-            display: flex;
-            justify-content: space-evenly;
-        }
+      .data {
+        text-align: center;
+      }
 
-        .data {
-            width: 180px;
-        }
-
-        .data {
-            text-align: center;
-           
-        }
-
-        .close {
-            top: 0%;
-            right: 0%;
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-        }
-
+      .close {
+        top: 0%;
+        right: 0%;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+      body{
+        color: white;
+        background-image: url(starwar-bck.jfif);
+      }
+     .btn{
+        background-color: rgb(2, 189, 2);
+        font-size: medium;
+        font-weight: 550;
+        padding: 8px 10px;
+        border-radius: 10px ;
+        cursor: pointer;
+      }
+      .btn:hover{
+        
+        background-color: green;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <h1 class="heading">
-        Star Wars
-    </h1>
-    <h3>
-        Page 1
-    </h3>
-    <div class="main">
-
-
-
-    </div>
+  <body>
+    <h1 class="heading">Star Wars</h1>
+    <h3 class="h3">Page 1</h3>
+    <div class="main"></div>
     <div class="overlay">
-        <div class="overlay1">
-
-           
-        </div>
+      <div class="overlay1"></div>
     </div>
     <div class="main">
-        <button id="prev">prev</button>
-        <button id="next">next</button>
+      <button class="btn" id="prev">prev</button>
+      <button class="btn" id="next">next</button>
     </div>
     <script src="index.js"></script>
-   
-</body>
-
+  </body>
 </html>
